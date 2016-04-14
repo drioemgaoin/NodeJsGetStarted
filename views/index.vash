@@ -1,1 +1,3 @@
-<p>Index</p>
+@html.extend('layout', function(model){
+	@html.include('home.vash')
+})

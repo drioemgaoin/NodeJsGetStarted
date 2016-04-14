@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@model.title</title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'/>
+    <link rel='stylesheet' href='/stylesheets/font-awesome.min.css'/>
+    <link rel='stylesheet' href='/stylesheets/jquery-ui.min.css'/>
+    <link rel='stylesheet' href='/stylesheets/jquery-ui-timepicker-addon.css'/>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+
+    <script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-ui-timepicker-addon.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top sticky">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#page-navigation" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="container">
+      <div id="page-navigation" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+                <a href="/home">Generate Pdf</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-body">
+  </div>
+  @html.block('scripts')
+  <script type="text/javascript">
+    $(function () {
+      $('.navbar-nav li').on('click', function(e) {
+        e.preventDefault();
+
+        $('ul.nav > li.active').removeClass('active');
+        $(this).addClass('active');
+
+        $.ajax({
+            url: $(e.target).attr('href'),
+            type: 'GET',
+            dataType: "html",
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+              $('.container-body').html(data);
+              $('#page-navigation').collapse('hide');
+            }
+        });
+      });
+
+      $('ul.nav > li.active > a').trigger('click');
+
+    });
+  </script>
+</body>
+</html>
