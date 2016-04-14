@@ -1,0 +1,2 @@
+<p>@model.message</p>
+<p>@model.error</p>
