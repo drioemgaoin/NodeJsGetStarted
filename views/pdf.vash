@@ -1,0 +1,5 @@
+<link rel='stylesheet' href='/stylesheets/style.css'/>
+
+<iframe id="iframe"></iframe>
+
+<script type="text/javascript" src="/javascripts/pdf.js"></script>

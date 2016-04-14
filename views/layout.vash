@@ -27,7 +27,10 @@
       <div id="page-navigation" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
             <li class="active">
-                <a href="/home">Generate Pdf</a>
+                <a href="/home">Home</a>
+            </li>
+            <li>
+                <a href="/pdf">Generate Pdf</a>
             </li>
         </ul>
       </div>
