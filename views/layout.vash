@@ -29,7 +29,7 @@
             <li class="active">
                 <a href="/home">Home</a>
             </li>
-            <li>
+            <li class="exclude">
                 <a href="/pdf">Generate Pdf</a>
             </li>
         </ul>
@@ -41,7 +41,7 @@
   @html.block('scripts')
   <script type="text/javascript">
     $(function () {
-      $('.navbar-nav li').on('click', function(e) {
+      $('.navbar-nav li').not('.exclude').on('click', function(e) {
         e.preventDefault();
 
         $('ul.nav > li.active').removeClass('active');
