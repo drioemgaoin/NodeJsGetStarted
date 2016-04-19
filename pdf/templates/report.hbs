@@ -1,8 +1,25 @@
-<div>
-  <h1>Report</h1>
-  <div>
-    <label>{{name}}</label>
-    <label>{{surname}}</label>
-    <label>{{email}}</label>
-  </div>
-</div>
+<html>
+  <head>
+  </head>
+  <body>
+    <div>
+      <h1>By {{fullName author}}</h1>
+      <div>{{body}}</div>
+
+      <h1>Comments</h1>
+
+      <table class="table table-striped" >
+          <tr>
+              <th>Column one</th>
+              <th>Column two</th>
+          </tr>
+          {{#each comments}}
+              <tr>
+                  <td>{{fullName author}}</td>
+                  <td>{{body}}</td>
+              </tr>
+           {{/each}}
+      </table>
+    </div>
+  </body>
+</html>

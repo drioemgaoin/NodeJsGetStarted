@@ -17,14 +17,21 @@ router.get('/pdf', function(req, res, next) {
 	var template = path.join(__dirname, '../pdf/templates/report.hbs');
 	var pdf = path.join(__dirname, '../pdf/tmp/report.pdf');
 
-	var data = {
-		name: "Romain",
-		surname: "Diegoni",
-		email: "romain_diegoni@hotmail.com"
+	var context = {
+	  author: {firstName: "Romain", lastName: "Diegoni"},
+	  body: "Report example",
+	  comments: [{
+	    author: {firstName: "John", lastName: "Doe"},
+	    body: "Me too!"
+	  },
+		{
+			author: {firstName: "John", lastName: "Doe2"},
+			body: "Me not at all!"
+		}]
 	};
 
 	var render = require('../utils/render.js')
-	render(template, data, function(rendered) {
+	render(template, context, function(rendered) {
 		generator.generate(rendered, pdf, function(){
 			res.download(pdf, 'file:///' + pdf, function() {
 				fs.unlinkSync(pdf);
